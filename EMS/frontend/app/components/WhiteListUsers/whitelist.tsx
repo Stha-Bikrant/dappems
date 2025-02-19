@@ -1,8 +1,8 @@
 import { useEMSContext } from "../../context/EMSContext";
 
 export default function AuditorPanel() {
-  const { contract, whitelistAddress, setWhitelistAddress, setEvidenceDescription,
-    caseId,evidenceId, setEvidenceDetails, evidenceDetails, setCaseId, setEvidenceId
+  const { contract, setWhitelistAddress, setEvidenceDescription,
+    caseId,evidenceId, evidenceDetails, setCaseId, setEvidenceId
    } = useEMSContext();
 
    const handleRedeemEvidenceDetails = async () => {
