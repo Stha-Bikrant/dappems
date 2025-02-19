@@ -8,7 +8,7 @@ import abi from "@/contracts/EMS.json";
 interface EMSContextType {
   account: string | null;
   userRole: string;
-  contract: any;
+  contract: ethers.Contract | null; // Use ethers.Contract for contract type
   connectWallet: () => Promise<void>;
   auditorAddress: string;
   setAuditorAddress: (address: string) => void;
@@ -41,7 +41,6 @@ interface EMSContextType {
     timestamp: number;
     createdDateTime: string;
   } | null) => void;
-  
 }
 
 // Create context with default values
@@ -56,7 +55,7 @@ export const EMSProvider: React.FC<EMSProviderProps> = ({ children }) => {
   // Wallet & Role Management
   const [account, setAccount] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string>("unknown");
-  const [contract, setContract] = useState<any>(null);
+  const [contract, setContract] = useState<ethers.Contract | null>(null); // Set the correct type
 
   // Case & Evidence Management
   const [auditorAddress, setAuditorAddress] = useState("");
@@ -76,7 +75,6 @@ export const EMSProvider: React.FC<EMSProviderProps> = ({ children }) => {
     timestamp: number;
     createdDateTime: string;
   } | null>(null);
-
 
   const CONTRACT_ADDRESS = ContractAddress.EMS;
   const CONTRACT_ABI = abi.abi;
@@ -102,7 +100,7 @@ export const EMSProvider: React.FC<EMSProviderProps> = ({ children }) => {
   };
 
   // Check User Role
-  const checkUserRole = async (address: string, contract: any) => {
+  const checkUserRole = async (address: string, contract: ethers.Contract) => { // Use ethers.Contract type
     if (!contract) return;
     try {
       const isAdmin = await contract.owner();
@@ -162,7 +160,6 @@ export const EMSProvider: React.FC<EMSProviderProps> = ({ children }) => {
         setCreatedDateTime,
         evidenceDetails,
         setEvidenceDetails
-
       }}
     >
       {children}
