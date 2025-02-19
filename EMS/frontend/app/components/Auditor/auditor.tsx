@@ -1,5 +1,5 @@
 import { useEMSContext } from "../../context/EMSContext";
-import {  useState } from "react";
+
 
 export default function AuditorPanel() {
   const { contract, auditorAddress, caseId, evidenceDescription, createdDateTime,courtId,caseDescription, startDateTime
