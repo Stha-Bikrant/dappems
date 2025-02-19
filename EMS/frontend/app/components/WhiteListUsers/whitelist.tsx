@@ -1,7 +1,7 @@
 import { useEMSContext } from "../../context/EMSContext";
 
 export default function AuditorPanel() {
-  const { contract, setWhitelistAddress, setEvidenceDescription,
+  const { contract,
     caseId,evidenceId, evidenceDetails, setCaseId, setEvidenceId
    } = useEMSContext();
 
@@ -25,7 +25,7 @@ export default function AuditorPanel() {
   
   return(
       <div className="mt-6">
-        <p>{whitelistAddress}</p>
+       
         <h2 className="text-lg font-semibold">Redeem Evidence Details</h2>
         <input type="number" placeholder="Case ID" value={caseId} onChange={(e) => setCaseId(Number(e.target.value))} className="block border p-2 w-full" />
         <input type="number" placeholder="Evidence ID" value={evidenceId} onChange={(e) => setEvidenceId(Number(e.target.value))} className="block border p-2 w-full" />
